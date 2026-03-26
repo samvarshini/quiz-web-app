@@ -8,6 +8,11 @@ let questions = [
     q: "Java is a?",
     options: ["Language", "Car", "Animal", "Food"],
     answer: 0
+  },
+  {
+    q: "HTML stands for?",
+    options: ["Hyper Trainer Marking Language", "Hyper Text Markup Language", "Hyper Text Marketing Language", "Hyper Tool Markup Language"],
+    answer: 1
   }
 ];
 
@@ -19,18 +24,25 @@ let timer;
 function loadQuestion() {
     clearInterval(timer);
     time = 10;
-    document.getElementById("timer").innerText = "Time: " + time;
 
     let q = questions[index];
-    document.getElementById("question").innerText = q.q;
 
+    document.getElementById("question").innerText = q.q;
+    document.getElementById("timer").innerText = "Time: " + time;
+
+    // Progress bar
+    let progress = (index / questions.length) * 100;
+    document.getElementById("bar").style.width = progress + "%";
+
+    // Load options
     let optionsHTML = "";
     q.options.forEach((opt, i) => {
-        optionsHTML += `<button onclick="checkAnswer(${i})">${opt}</button><br>`;
+        optionsHTML += `<button onclick="checkAnswer(${i})">${opt}</button>`;
     });
 
     document.getElementById("options").innerHTML = optionsHTML;
 
+    // Timer logic
     timer = setInterval(() => {
         time--;
         document.getElementById("timer").innerText = "Time: " + time;
@@ -55,11 +67,19 @@ function nextQuestion() {
     if (index < questions.length) {
         loadQuestion();
     } else {
-        document.getElementById("question").innerText = "Quiz Finished!";
-        document.getElementById("options").innerHTML = "";
-        document.getElementById("score").innerText = "Score: " + score;
-        document.getElementById("timer").innerText = "";
+        endQuiz();
     }
+}
+
+function endQuiz() {
+    clearInterval(timer);
+
+    document.getElementById("question").innerText = "Quiz Finished!";
+    document.getElementById("options").innerHTML = "";
+    document.getElementById("timer").innerText = "";
+    document.getElementById("score").innerText = "Your Score: " + score;
+
+    document.getElementById("bar").style.width = "100%";
 }
 
 loadQuestion();

@@ -1,21 +1,86 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
 body {
-    font-family: Arial;
-    text-align: center;
-    background: #f2f2f2;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Card */
 .container {
-    margin-top: 100px;
+    background: white;
+    padding: 30px;
+    width: 400px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 6px 25px rgba(0,0,0,0.2);
 }
 
+/* Heading */
+h1 {
+    margin-bottom: 15px;
+}
+
+/* Question */
+#question {
+    margin: 20px 0;
+}
+
+/* Options */
 button {
-    padding: 10px;
-    margin: 5px;
-    width: 200px;
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    background: #667eea;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
+/* Hover */
+button:hover {
+    background: #5a67d8;
+    transform: scale(1.05);
+}
+
+/* Timer */
 #timer {
-    color: red;
+    margin-top: 15px;
     font-weight: bold;
+    color: red;
+}
+
+/* Score */
+#score {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* Progress Bar */
+#progress {
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+#bar {
+    height: 10px;
+    width: 0%;
+    background: green;
+    border-radius: 5px;
 }
